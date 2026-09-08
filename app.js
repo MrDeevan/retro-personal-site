@@ -1,53 +1,39 @@
-// Retro Personal Site - SPA Router
-
-const pages = {
-    '/': 'home',
-    '/about': 'about',
-    '/skills': 'skills',
-    '/contact': 'contact'
-};
-
-// Simple Router
-function router() {
-    const path = window.location.pathname.replace('/retro-personal-site', '') || '/';
-    const pageName = pages[path];
-    
-    if (pageName) {
-        updateActiveNav(path);
-    } else {
-        window.location.href = '/';
-    }
-}
-
-// Update active navigation
-function updateActiveNav(path) {
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === path) {
-            link.style.color = '#ff00ff';
-            link.style.textShadow = '0 0 10px #ff00ff';
-        } else {
-            link.style.color = '#00ff88';
-            link.style.textShadow = '0 0 10px #00ff88';
-        }
-    });
-}
+// Retro Personal Site - Navigation & Effects
 
 // Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="/"]').forEach(anchor => {
+document.querySelectorAll('a[href^="/"], a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
+        let target;
         const href = this.getAttribute('href');
-        window.history.pushState({}, '', href);
-        router();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Handle both /about and #about formats
+        if (href.startsWith('/')) {
+            const sectionMap = {
+                '/': '#home',
+                '/about': '#about',
+                '/skills': '#skills',
+                '/contact': '#contact'
+            };
+            target = document.querySelector(sectionMap[href] || '#home');
+        } else {
+            target = document.querySelector(href);
+        }
+        
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
 
 // Terminal typing effect
 function typeEffect() {
     const typeText = document.querySelector('.type-text');
+    if (!typeText) return;
+    
     const text = typeText.textContent;
     typeText.textContent = '';
     let index = 0;
@@ -89,6 +75,39 @@ function addGlitchEffect() {
     });
 }
 
+// Add active state to navbar links based on scroll position
+function updateActiveLink() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            const linkTarget = href.replace('/', '');
+            
+            if (linkTarget === current || (linkTarget === '' && current === 'home')) {
+                link.style.color = '#ff00ff';
+                link.style.textShadow = '0 0 10px #ff00ff';
+            } else {
+                link.style.color = '#00ff88';
+                link.style.textShadow = '0 0 10px #00ff88';
+            }
+        });
+    });
+}
+
 // Animate elements on scroll
 function observeElements() {
     const observer = new IntersectionObserver((entries) => {
@@ -115,10 +134,12 @@ function scanlineGlitch() {
     setInterval(() => {
         if (Math.random() > 0.95) {
             const scanlines = document.querySelector('.scanlines');
-            scanlines.style.animation = 'none';
-            setTimeout(() => {
-                scanlines.style.animation = 'flicker 0.15s infinite';
-            }, 50);
+            if (scanlines) {
+                scanlines.style.animation = 'none';
+                setTimeout(() => {
+                    scanlines.style.animation = 'flicker 0.15s infinite';
+                }, 50);
+            }
         }
     }, 2000);
 }
@@ -158,9 +179,9 @@ function addHeadingGlow() {
 
 // Initialize all effects
 document.addEventListener('DOMContentLoaded', () => {
-    router();
     typeEffect();
     addGlitchEffect();
+    updateActiveLink();
     observeElements();
     scanlineGlitch();
     createParticles();
@@ -172,5 +193,22 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('%c[ SYSTEM READY ]', 'color: #00ffff; font-size: 11px;');
 });
 
-// Handle browser back/forward buttons
-window.addEventListener('popstate', router);
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    // Alt + H = Home
+    if (e.altKey && e.key === 'h') {
+        document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
+    }
+    // Alt + A = About
+    if (e.altKey && e.key === 'a') {
+        document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+    }
+    // Alt + S = Skills
+    if (e.altKey && e.key === 's') {
+        document.querySelector('#skills').scrollIntoView({ behavior: 'smooth' });
+    }
+    // Alt + C = Contact
+    if (e.altKey && e.key === 'c') {
+        document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+    }
+});
