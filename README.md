@@ -5,12 +5,16 @@
   ██║╚██╔╝██║██╔══██╗██║  ██║██╔══╝  ██╔══╝  ██║   ██║██╔══██║██║╚██╗██║
   ██║ ╚═╝ ██║██║  ██║██████╔╝███████╗███████╗╚██████╔╝██║  ██║██║ ╚████║
   ╚═╝     ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝
-                    MrDeevan - CREATIVE VISIONARY
+                     MrDeevan - CREATIVE VISIONARY
 ```
 
 # Welcome to the Grid 🎮
 
 A cyberpunk-inspired, retro-techy personal portfolio of MrDeevan - a 17-year-old creative visionary studying NextGen Level 3 BTEC at Big Creative Education.
+
+## 🌐 Visit My Site
+
+**[MrDeevan.github.io](https://MrDeevan.github.io)** - Check out my live portfolio!
 
 ## 🎨 About Me
 
