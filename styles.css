@@ -51,15 +51,9 @@ body {
 }
 
 @keyframes flicker {
-    0% {
-        opacity: 0.95;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.95;
-    }
+    0% { opacity: 0.95; }
+    50% { opacity: 1; }
+    100% { opacity: 0.95; }
 }
 
 /* Navbar */
@@ -87,6 +81,7 @@ body {
     color: var(--primary-neon);
     text-shadow: 0 0 10px var(--primary-neon);
     letter-spacing: 2px;
+    cursor: pointer;
 }
 
 .bracket {
@@ -106,6 +101,7 @@ body {
     letter-spacing: 1px;
     position: relative;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .nav-link:hover {
@@ -152,12 +148,8 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(30px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(30px); }
 }
 
 .hero-content {
@@ -176,12 +168,8 @@ body {
 }
 
 @keyframes glow {
-    0%, 100% {
-        text-shadow: 0 0 20px var(--primary-neon), 0 0 40px rgba(0, 255, 136, 0.5);
-    }
-    50% {
-        text-shadow: 0 0 30px var(--primary-neon), 0 0 60px rgba(0, 255, 136, 0.7);
-    }
+    0%, 100% { text-shadow: 0 0 20px var(--primary-neon), 0 0 40px rgba(0, 255, 136, 0.5); }
+    50% { text-shadow: 0 0 30px var(--primary-neon), 0 0 60px rgba(0, 255, 136, 0.7); }
 }
 
 .glitch {
@@ -193,21 +181,11 @@ body {
 }
 
 @keyframes glitch {
-    0%, 100% {
-        transform: translate(0, 0);
-    }
-    20% {
-        transform: translate(-2px, 2px);
-    }
-    40% {
-        transform: translate(-2px, -2px);
-    }
-    60% {
-        transform: translate(2px, 2px);
-    }
-    80% {
-        transform: translate(2px, -2px);
-    }
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
 }
 
 .subtitle {
@@ -231,25 +209,6 @@ body {
 
 .prompt {
     color: var(--secondary-neon);
-}
-
-.type-text {
-    animation: typing 2s steps(30, end) infinite;
-}
-
-@keyframes typing {
-    0% {
-        width: 0;
-        opacity: 1;
-    }
-    50% {
-        width: 100%;
-        opacity: 1;
-    }
-    100% {
-        width: 100%;
-        opacity: 0.5;
-    }
 }
 
 .cta-button {
@@ -342,12 +301,8 @@ section {
 }
 
 @keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(0, 255, 255, 0.1);
-    }
-    50% {
-        box-shadow: 0 0 50px rgba(0, 255, 255, 0.6), inset 0 0 30px rgba(0, 255, 255, 0.2);
-    }
+    0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(0, 255, 255, 0.1); }
+    50% { box-shadow: 0 0 50px rgba(0, 255, 255, 0.6), inset 0 0 30px rgba(0, 255, 255, 0.2); }
 }
 
 .neon-text {
@@ -357,74 +312,48 @@ section {
     text-shadow: 0 0 20px var(--tertiary-neon);
 }
 
-/* Projects Section */
-.projects {
+/* Skills Section */
+.skills {
     background: rgba(255, 0, 255, 0.02);
 }
 
-.projects-grid {
+.skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-.project-card {
+.skill-card {
     background: rgba(0, 0, 0, 0.4);
     border: 2px solid var(--secondary-neon);
-    padding: 1.5rem;
+    padding: 2rem;
+    text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
 }
 
-.project-card:hover {
+.skill-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 0 30px rgba(255, 0, 255, 0.6), inset 0 0 20px rgba(255, 0, 255, 0.1);
     border-color: var(--primary-neon);
 }
 
-.project-header {
+.skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.skill-name {
     color: var(--secondary-neon);
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--secondary-neon);
     letter-spacing: 1px;
-}
-
-.project-card p {
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-.project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.tech-tag {
-    background: rgba(0, 255, 136, 0.1);
-    border: 1px solid var(--primary-neon);
-    color: var(--primary-neon);
-    padding: 0.3rem 0.7rem;
-    font-size: 0.8rem;
-    border-radius: 2px;
-}
-
-.project-link {
-    color: var(--primary-neon);
-    text-decoration: none;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.project-link:hover {
-    color: var(--secondary-neon);
     text-shadow: 0 0 10px var(--secondary-neon);
+}
+
+.skill-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
 /* Contact Section */
