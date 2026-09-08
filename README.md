@@ -14,7 +14,7 @@ A cyberpunk-inspired, retro-techy personal portfolio of MrDeevan - a 17-year-old
 
 ## 🌐 Visit My Site
 
-**[MrDeevan.github.io](https://MrDeevan.github.io)** - Check out my live portfolio!
+**[MrDeevan.github.io/retro-personal-site](https://MrDeevan.github.io/retro-personal-site/)** - Check out my live portfolio!
 
 ## 🎨 About Me
 
